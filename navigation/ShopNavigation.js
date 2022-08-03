@@ -1,7 +1,9 @@
+import {Image, Platform} from 'react-native';
+
 import {BreadDetailScreen} from '../screens/BreadDetailScreen';
+import {COLORS} from '../constansts/Colors';
 import {CategoriesScreen} from '../screens/CategoriesScreen';
 import {CategoryBreadScreen} from '../screens/CategoryBreadScreen';
-import {Image} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
@@ -27,7 +29,8 @@ const ShopNavigatior = () => {
 				initialRouteName="Home"
 				screenOptions={{
 					headerStyle: {
-						backgroundColor: '#00bfff',
+						backgroundColor:
+							Platform.OS === 'android' ? COLORS.primary : COLORS.secondary,
 					},
 					headerTinColor: 'black',
 					headerTitleStyle: {
@@ -38,9 +41,21 @@ const ShopNavigatior = () => {
 					headerTitle: (props) => <Logo {...props} />,
 				}}
 			>
-				<Stack.Screen name="Home" component={CategoriesScreen} />
-				<Stack.Screen name="Breads" component={CategoryBreadScreen} />
-				<Stack.Screen name="Detail" component={BreadDetailScreen} />
+				<Stack.Screen
+					name="Home"
+					component={CategoriesScreen}
+					options={{title: 'Bakery'}}
+				/>
+				<Stack.Screen
+					name="Products"
+					component={CategoryBreadScreen}
+					options={({route}) => ({title: route.params.name})}
+				/>
+				<Stack.Screen
+					name="Detail"
+					component={BreadDetailScreen}
+					options={({route}) => ({title: route.params.bread.name})}
+				/>
 			</Stack.Navigator>
 		</NavigationContainer>
 	);
