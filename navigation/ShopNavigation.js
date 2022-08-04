@@ -1,12 +1,11 @@
-import {Image, Platform} from 'react-native';
+import { Image, Platform } from 'react-native';
 
-import {BreadDetailScreen} from '../screens/BreadDetailScreen';
-import {COLORS} from '../constansts/Colors';
-import {CategoriesScreen} from '../screens/CategoriesScreen';
-import {CategoryBreadScreen} from '../screens/CategoryBreadScreen';
-import {NavigationContainer} from '@react-navigation/native';
+import { BreadDetailScreen } from '../screens/BreadDetailScreen';
+import { COLORS } from '../constansts/Colors';
+import { CategoriesScreen } from '../screens/CategoriesScreen';
+import { CategoryBreadScreen } from '../screens/CategoryBreadScreen';
 import React from 'react';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 const Stack = createNativeStackNavigator();
 const Logo = () => {
@@ -24,7 +23,7 @@ const Logo = () => {
 };
 const ShopNavigatior = () => {
 	return (
-		<NavigationContainer>
+		
 			<Stack.Navigator
 				initialRouteName="Home"
 				screenOptions={{
@@ -57,7 +56,7 @@ const ShopNavigatior = () => {
 					options={({route}) => ({title: route.params.bread.name})}
 				/>
 			</Stack.Navigator>
-		</NavigationContainer>
+	
 	);
 };
 export default ShopNavigatior;
