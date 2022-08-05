@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
      },
      total: {
          fontSize: 18,
-         fontFamily: 'OpenSansBold'
+         fontFamily: 'IMedium'
      }
  })
 

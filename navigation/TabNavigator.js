@@ -5,7 +5,7 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import OrdersNavigator from './OrdersNavigator';
 import React from 'react';
 import ShopNavigator from './ShopNavigation';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 const TabNavigator = () => {
 	const ButtomTabs = createBottomTabNavigator();
