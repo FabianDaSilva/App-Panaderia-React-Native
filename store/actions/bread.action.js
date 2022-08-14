@@ -3,7 +3,7 @@ export const FILTERED_BREAD = 'FILTERED_BREAD';
 
 export const selectBread = (id) => ({
 	type: SELECT_BREAD,
-	categoryID: id,
+	breadID: id,
 });
 
 export const filteredBread = (id) => ({

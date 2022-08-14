@@ -7,30 +7,31 @@ import React from 'react';
 import {useEffect} from 'react';
 
 export const CategoryBreadScreen = ({navigation, route}) => {
-	const dispatch = useDispatch();
-	const categoryBreads = useSelector((store) => store.breads.filteredBread);
-	const category = useSelector((store) => store.categories.selected);
-
+    
+	const dispatch = useDispatch()
+	const categoryBreads = useSelector(store => store.breads.filteredBread)
+	const category = useSelector(store => store.categories.selected )
+ 
 	useEffect(() => {
-		dispatch(filteredBread(category.id));
-	}, []);
-
+	    dispatch(filteredBread(category.id))
+	},[])
+ 
 	const handleSelected = (item) => {
-		dispatch(selectBread(item.id));
-		navigation.navigate('Detail', {
-			bread: item.name
-		});
-	};
-
-	const renderItemBread = ({item}) => (
-		<BreadItem item={item} onSelected={handleSelected} />
-	);
-
+	    dispatch(selectBread(item.id))
+	    navigation.navigate('Detail', {
+		   bread: item.name
+	    })
+	}
+ 
+	const renderItemBread = ({ item }) => (
+	    <BreadItem item={item} onSelected={handleSelected} />
+	)
+ 
 	return (
-		<FlatList
-			data={categoryBreads}
-			renderItem={renderItemBread}
-			keyExtractor={(item) => item.id}
-		/>
-	);
-};
+	    <FlatList
+		   data={categoryBreads}
+		   renderItem={renderItemBread}
+		   keyExtractor={item => item.id}
+	    />
+	)
+ }
