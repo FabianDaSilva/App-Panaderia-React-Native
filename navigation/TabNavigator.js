@@ -2,6 +2,7 @@ import {StyleSheet, Text, View} from 'react-native';
 
 import CartNavigator from './CartNavigator';
 import Ionicons from '@expo/vector-icons/Ionicons';
+import OrderScreen from '../screens/OrderScreen';
 import OrdersNavigator from './OrdersNavigator';
 import React from 'react';
 import ShopNavigator from './ShopNavigation';

@@ -1,22 +1,27 @@
-import { StyleSheet, Text, View } from 'react-native';
+import {Button, StyleSheet, Text, View} from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
 
+import {COLORS} from '../constansts/Colors';
+import {Ionicons} from '@expo/vector-icons';
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { addItem } from '../store/actions/cart.actions';
 
-export const BreadDetailScreen = ({ route }) => {
+export const BreadDetailScreen = ({route}) => {
+	const dispatch = useDispatch();
+	const bread = useSelector((store) => store.breads.selected);
+	const handlerAddItemCart =()=> dispatch(addItem(bread))
 
-	 
-	const bread = useSelector(store => store.breads.selected);
- 
 	return (
-	    <View style={styles.screen}>
-		   <Text style={styles.title}>{bread.name}</Text>
-		   <Text>{bread.description}</Text>
-		   <Text>{bread.price}</Text>
-		   <Text>{bread.weight}</Text>
-	    </View>
-	)
- }
+		<View style={styles.screen}>
+			<Text style={styles.title}>{bread.name}</Text>
+			<Text>{bread.description}</Text>
+			<Text>{bread.price}</Text>
+			<Text>{bread.weight}</Text>
+			<Button title='Agregar al carrito' onPress={handlerAddItemCart}/>
+			<Ionicons name="cart" size={24} color={COLORS.primary}/>
+		</View>
+	);
+};
 
 const styles = StyleSheet.create({
 	screen: {
