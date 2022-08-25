@@ -1,7 +1,10 @@
 export const COLORS={
-     primary:"#fff9e8",
-     secondary:"#ffe8aa",
-     neutralsOne:"#727678",
-     neutralsTwo:"#fbfcfd"
+     primary:'#2D93AD',
+    accent:'#aac0af',
+    DARK_SIENNA: "#450920",
+    MAROON: "#a53860",
+    BLUSH: "#da627d",
+    LIGTH_PINK: "#ffa5ab",
+    PEACH_PUFF: "#f9dbbd",
      
 }
