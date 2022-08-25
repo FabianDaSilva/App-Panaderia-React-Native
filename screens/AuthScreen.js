@@ -10,21 +10,26 @@ import {
 } from 'react-native';
 
 import {COLORS} from '../constansts/Colors';
-import {signup} from "../store/actions/auth.actions"
+import {signup} from '../store/actions/auth.actions';
 import {useDispatch} from 'react-redux';
 import {useState} from 'react';
 
 const AuthScreen = () => {
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+
 	const dispatch = useDispatch();
 	const title = 'REGISTRO';
 	const message = 'Ya tienes cuenta?';
 	const messageAction = 'ingresar';
 	const messageTarget = 'Login';
+
+	
 	const handleSingUp = () => {
 		dispatch(signup(email, password));
-	}
+	};
+
 	return (
 		<KeyboardAvoidingView
 			behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -38,14 +43,16 @@ const AuthScreen = () => {
 						style={styles.input}
 						keyboardType="email-address"
 						autoCapitalize="none"
+						onChangeText={(text) => setEmail(text)}
 					/>
 					<Text style={styles.label}>Clave</Text>
 					<TextInput
 						style={styles.input}
 						secureTextEntry
 						autoCapitalize="none"
+						onChangeText={(text) => setPassword(text)}
 					/>
-					<Button title="Registrame" onPress={handleSingUp}/>
+					<Button title="Registrame" onPress={handleSingUp} />
 				</View>
 				<View style={styles.prompt}>
 					<Text style={styles.promptMessage}>{message}</Text>
