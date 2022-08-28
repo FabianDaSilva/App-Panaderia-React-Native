@@ -1,29 +1,47 @@
-import {FlatList, StyleSheet, Text, View} from 'react-native';
+import * as addressAction from '../store/actions/places.action'
 
-import PlaceItems from '../Components/PlaceItems';
-import {useSelector} from 'react-redux';
+import { FlatList, Text } from 'react-native'
+import React, { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-const PlaceListScreen = ({navigation}) => {
-	const places = useSelector((state) => state.places.places);
+import PlaceItem from '../Components/PlaceItems'
 
-  
-	const renderItem = (data) => (
-		<PlaceItems
-			title={data.item.title}
-			image={data.item.image}
-			address="dasdasdas dsadsa222 552"
-			onSelect={() => navigation.navigate('Detalle')}
-		/>
-	);
+const PlaceListScreen = ({ navigation }) => {
 
-  
-	return (
-		<FlatList
-			data={places}
-			renderItem={renderItem}
-			keyExtractor={(item) => item.id}
-		/>
-	);
-};
-export default PlaceListScreen;
-const styles = StyleSheet.create({});
+    const dispatch = useDispatch();
+    const places = useSelector(state => state.places.places)
+
+    const renderItem = (data) => (
+        <PlaceItem
+            id={data.item.id}
+            title={data?.item.title}
+            image={data?.item.image}
+            address={data?.item.address}
+            onSelect={() => navigation.navigate('Detalle', {
+                placeID: data.item.id
+            })}
+        />
+    )
+
+    useEffect(() => {
+        dispatch(addressAction.loadAddress())
+    }, [])
+
+    return (
+        <>
+        { places?.length > 0 ? (
+                <FlatList
+                    data={places}
+                    renderItem={renderItem}
+                    keyExtractor={(item) => Date.now()}
+                />
+            ) : (
+                <Text>No hay lugares</Text>
+            ) 
+        }
+        </>
+    )
+}
+
+
+export default PlaceListScreen

@@ -1,54 +1,53 @@
-import {ADD_ITEM, REMOVE_ITEM} from '../actions/cart.actions';
-
-import {CART} from '../../data/cart';
+import { ADD_ITEM, CONFIRM_CART, REMOVE_ITEM } from '../actions/cart.actions';
 
 const INITIAL_STATE = {
-	items: CART,
-	total: 27000,
-};
+    items: [],
+    total: 0
+}
 
-const sumTotal = (list) =>
-	list.map((item) => item.quantity * item.price).reduce((a, b) => a + b, 0);
+const sumTotal = (list) => list
+    .map(item => item.quantity * item.price)
+    .reduce((a, b) => a + b, 0);
 
 const CartReducer = (state = INITIAL_STATE, action) => {
-	switch (action.type) {
-		case ADD_ITEM:
-			let updateCart = [];
+    switch(action.type) {
+        case ADD_ITEM:
+            let updatedCart = [];
 
-			if (state.items.find((item) => item.id === action.item.id)) {
-				updateCart = state.items.map((item) => {
-					if (item.id === action.item.id) item.quantity++;
-					return item;
-				});
-			} else {
-				const item = {...action.item, quantity: 1};
-				updateCart = [...state.items, item];
-			}
-			return {
-				...state,
-				items: updateCart,
-				total: sumTotal(updateCart),
-			};
-		case REMOVE_ITEM:
-			const filteredCart = state.items.filter(
-				(item) => item.id !== action.itemID
-			);
-			return {
-				...state,
-				items: filteredCart,
-				total: sumTotal(filteredCart),
-			};
+            if (state.items.find(item => item.id === action.item.id)) {
+                updatedCart = state.items.map(item => {
+                    if (item.id === action.item.id) item.quantity++;
+                    return item;
+                })
+            } else {
+                const item = {...action.item, quantity: 1}
+                updatedCart = [...state.items, item]
+            }
 
-		case 'CONFIRM_CART':
-			return {
-				...state,
-				items: [],
-				total: 0,
-			};
+            return {
+                ...state,
+                items: updatedCart,
+                total: sumTotal(updatedCart)
+            }
+        case REMOVE_ITEM:
+            const filteredCart = state.items.filter(item => item.id !== action.itemID);
+            return {
+                ...state,
+                items: filteredCart,
+                total: sumTotal(filteredCart)
+            }
+        case CONFIRM_CART:
+            if(action.confirm) {
+                return {
+                    ...state,
+                    items: [],
+                    total: 0
+                }
+            }
+        default:
+            return state
+    }
 
-		default:
-			return state;
-	}
-};
+}
 
 export default CartReducer;

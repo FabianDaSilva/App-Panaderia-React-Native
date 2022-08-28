@@ -1,4 +1,4 @@
-import { COLORS } from '../constansts/Colors'
+import { COLORS } from '../constansts/Colors';
 import OrderItemScreen from '../screens/OrderItemScreen';
 import { Platform } from 'react-native';
 import React from 'react';

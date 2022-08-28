@@ -2,7 +2,7 @@ export const BREADS = [
 	{
 	    id: 1,
 	    category: 1,
-	    name: 'Pan de Baquette',
+	    name: 'Pan Baquette',
 	    description: 'Clasico pan frances',
 	    weight: '350gr',
 	    price: 1600,
@@ -10,7 +10,7 @@ export const BREADS = [
 	{
 	    id: 2,
 	    category: 1,
-	    name: 'Pan de ciabatta blanco',
+	    name: 'Pan ciabatta blanco',
 	    description: 'Pan de alta hidratacion, miga alveolada y corteza crujiente',
 	    weight: '800gr',
 	    price: 3000,
@@ -18,7 +18,7 @@ export const BREADS = [
 	{
 	    id:3,
 	    category: 1,
-	    name:'Pan de Hamburguesa',
+	    name:'Pan Hamburguesa',
 	    description: 'Textura suave,decorado con semillas de sésano tostadas',
 	    weight:'120gr',
 	    price:500,

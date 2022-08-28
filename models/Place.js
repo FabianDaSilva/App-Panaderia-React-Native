@@ -1,3 +1,9 @@
-const Place = (id, title, image) => {};
 
-export default Place;
+class Place {
+	constructor(id, title, image) {
+		this.id = id.toString();
+		this.title = title;
+          this.image = image
+	}
+}
+ export default Place
